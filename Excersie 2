@@ -1,0 +1,31 @@
+public class Homework2 {
+    public static void main(String[] args) {
+
+        int number = 35;
+
+        for(int i = 1; i <= number; ++i) {
+            if (number % i == 0) {
+                //System.out.print(i + " ");
+                ///mans murgs
+               int convert =i;
+               String number1 = Integer.toString(i);
+                switch (number1) {
+                    case "3":
+                        System.out.println("Pling");
+                        break;
+                    case "5":
+                        System.out.println("Plang");
+                        break;
+                    case "7":
+                         System.out.println("Plong");
+                         break;
+                    case "3 && 5":
+                        System.out.println("PlingPlang");
+                        break;
+                }
+            }
+        }
+            }
+        }
+
+
