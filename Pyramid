@@ -1,0 +1,28 @@
+public class Pyramid {
+    public static void main(String[] args) {
+
+        int row;
+        for (row = 0; row <= 8; row++) { // Prints each row
+            for (int spaces = 8; spaces >= row; spaces--) { // Prints out spaces to left
+                System.out.print("  ");
+            }
+
+            int power1 = 0; // Power that 2 is being raised to
+            for (int i = 0; i < row; i++) { // Prints left side of the pyramid
+                System.out.print(" " + (int) Math.pow(3, power1));
+                power1++;
+            }
+
+            int power2 = row - 1;
+            for (int i = 1; i < row; i++) { // Prints right side of the pyramid
+                power2--;
+                System.out.print(" " + (int) Math.pow(3, power2));
+            }
+
+            System.out.println();
+        }
+    }
+}
+
+
+
