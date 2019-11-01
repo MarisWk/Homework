@@ -1,0 +1,108 @@
+package com.exercise3;
+
+import java.util.Scanner;
+
+public static void main(String[]args){
+
+
+public class TicTacToe {
+    public static char[][] board;
+    public static char turn;
+    public static int row, column;
+    public static boolean gameOver = false;
+    public static boolean draw = false;
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        board = new char[3][3];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = '_';
+            }
+        }
+        turn = 'x';
+        while (!gameOver) {
+            play();
+        }
+        if (gameOver) {
+            if (draw) {
+                printBoard();
+                System.out.println("Game over! It's a draw!");
+            } else {
+                printBoard();
+                System.out.println("Game over! " + turn + " won!");
+            }
+        }
+    }
+
+    public static void play() {
+
+        printBoard();
+        System.out.println("Enter row for " + turn);
+        row = scanner.nextInt() - 1;
+        System.out.println("Enter column for " + turn);
+        column = scanner.nextInt() - 1;
+        if (board[row][column] == '_') {
+            board[row][column] = turn;
+            checkBoard();
+            if (!gameOver) {
+                if (turn == 'x') {
+                    turn = 'o';
+                } else if (turn == 'o') {
+                    turn = 'x';
+                }
+            }
+        } else {
+            System.out.println("Someone already played that space!");
+        }
+
+    }
+
+    public static void checkBoard() {
+        for (int i = 0; i < 3; i++) {
+            if (board[i][0] == turn && board[i][1] == turn && board[i][2] == turn) {
+                gameOver = true;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            if (board[0][i] == turn && board[1][i] == turn && board[2][i] == turn) {
+                gameOver = true;
+            }
+        }
+        if (board[0][0] == turn && board[1][1] == turn && board[2][2] == turn) {
+            gameOver = true;
+        }
+        if (board[0][2] == turn && board[1][1] == turn && board[2][0] == turn) {
+            gameOver = true;
+        }
+        draw = true;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == '_') {
+                    draw = false;
+                }
+            }
+        }
+        if (draw) {
+            if (gameOver) {
+                draw = false;
+            } else {
+                gameOver = true;
+            }
+
+        }
+    }
+
+    public static void printBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+}
+
+}
